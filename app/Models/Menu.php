@@ -5,11 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Plat extends Model
+class Menu extends Model
 {
-    protected $fillable = ['id', 'Nom', 'description', 'prix'];
-
-
-    //ajout du CRUD
-
+	protected $fillable = ['id', 'nom_menu', 'description_menu', 'prix'];	
 }

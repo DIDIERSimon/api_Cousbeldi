@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddsApiTokenToUsersTable extends Migration
+class CreateMenusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddsApiTokenToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('api_token', 60)->unique()->nullable();
+        Schema::create('menus', function (Blueprint $table) {
+            $table->increments("id");
+            $table->string('nom_menu');
+            $table->text('description_menu');
+            $table->double('prix');
         });
     }
 
@@ -25,8 +28,6 @@ class AddsApiTokenToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['api_token']);
-        });
+        Schema::dropIfExists('menus');
     }
 }
