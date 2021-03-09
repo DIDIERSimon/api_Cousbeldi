@@ -11,9 +11,9 @@ class MenuController extends Controller
     	return Menu::all();
     }
 
-    public function show(Menu $menu)
+    public function show($menu)
     {
-    	return $menu;
+    	return Menu::findOrFail($menu);
     }
 
     public function store(Request $request): JsonResponse

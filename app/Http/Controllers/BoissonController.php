@@ -13,7 +13,7 @@ class BoissonController extends Controller
 
     public function show(Boisson $boisson)
     {
-    	return $boisson;
+    	return Boisson::findOrFail($boisson);
     }
 
     public function store(Request $request): JsonResponse

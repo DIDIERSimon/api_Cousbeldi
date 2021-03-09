@@ -13,9 +13,9 @@ class PlatController extends Controller
         return Plat::all();
     }
 
-    public function show(Plat $plat)
+    public function show($plat)
     {
-        return $plat;
+        return Plat::findOrFail($plat);
     }
 
     public function store(Request $request): JsonResponse
