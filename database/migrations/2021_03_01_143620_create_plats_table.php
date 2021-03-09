@@ -18,6 +18,7 @@ class CreatePlatsTable extends Migration
             $table->string("Nom");
             $table->text("description");
             $table->double("prix");
+            $table->timestamps();
         });
     }
 
