@@ -8,8 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Plat extends Model
 {
     protected $fillable = ['id', 'Nom', 'description', 'prix'];
-
-
-    //ajout du CRUD
-
 }
