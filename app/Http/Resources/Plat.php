@@ -16,9 +16,10 @@ class Plat extends JsonResource
     {
         return [
             'id' => $this->id,
-            'nom' => $this->nom,
+            'Nom' => $this->Nom,
             'description' => $this->description,
             'prix' => $this->prix,
+            'url_path' => $this->url_path,
             'created_at' => $this->created_at->format('d/m/Y'),
             'updated_at' => $this->updated_at->format("d/m/Y"),
         ];

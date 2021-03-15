@@ -35,6 +35,7 @@ class PlatController extends BaseController
             'nom' => 'required',
             'description' => 'required',
             'prix' => 'required',
+            'img_path' => 'required',
         ]);
         if($validator->fails())
         {
@@ -53,6 +54,7 @@ class PlatController extends BaseController
             'nom' => 'required',
             'description' => 'required',
             'prix' => 'required',
+            'img_path' => 'required',
         ]);
         if($validator->fails())
         {
@@ -61,6 +63,7 @@ class PlatController extends BaseController
         $plat->nom = $input['name'];
         $plat->description = $input['description'];
         $plat->prix = $input['prix'];
+        $plat->img_path = $input['img_path'];
         $plat->save();
         return $this->sendResponse(new PlatResource($plat), 'Plat modifier avec succès !');
     }
