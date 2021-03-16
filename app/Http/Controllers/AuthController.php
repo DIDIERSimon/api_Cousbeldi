@@ -22,7 +22,9 @@ class AuthController extends BaseController
     		'name' => 'required',
     		'email' => 'required|email',
     		'password' => 'required',
-    		'c_password' => 'required|same:password'
+    		'c_password' => 'required|same:password',
+			'telephone' => 'required',
+			'adresse' => 'required',
     	]);
 
     	if($validator->fails())
@@ -35,6 +37,8 @@ class AuthController extends BaseController
     	$user = User::create($input);
     	$success['token'] = $user->createToken('MyApp')->accessToken;
     	$success['name'] = $user->name;
+		$success['telephone'] = $user->telephone;
+		$success['adresse'] = $user->adresse;
 
     	return $this->sendResponse($success, 'Utilisateur enregistrer avec succès.');
     }
