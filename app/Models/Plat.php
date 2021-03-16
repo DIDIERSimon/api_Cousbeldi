@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Plat extends Model
 {
-    protected $fillable = ['id', 'Nom', 'description', 'prix'];
+    protected $fillable = ['id', 'Nom', 'description', 'prix', 'img_path'];
 }

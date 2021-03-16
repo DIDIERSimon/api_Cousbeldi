@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PlatController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\AuthController;
 use App\Models\Plat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -35,9 +35,6 @@ Route::post('boissons', [BoissonController::class, 'store']);
 Route::put('boisson/{id}', [BoissonController::class, 'update']);
 Route::delete('boisson/{id}', [BoissonController::class, 'delete']);
 
-//Menus
-Route::get('menus', [BoissonController::class, 'index']);
-Route::get('menus/{id}', [BoissonController::class, 'show']);
-Route::post('menus', [BoissonController::class, 'store']);
-Route::put('menus/{id}', [BoissonController::class, 'update']);
-Route::delete('menus/{id}', [BoissonController::class, 'delete']);
+//Authentification
+Route::post('register', [AuthController::class, 'register']);
+Route::post('login', [AuthController::class, 'login']);
