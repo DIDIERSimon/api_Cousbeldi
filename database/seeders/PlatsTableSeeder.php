@@ -14,7 +14,6 @@ class PlatsTableSeeder extends Seeder
      */
     public function run()
     {
-        Plat::truncate();
 
         $faker = \Faker\Factory::create();
 
@@ -24,6 +23,7 @@ class PlatsTableSeeder extends Seeder
                 'Nom' => $faker->sentence,
                 'description' => $faker->paragraph,
                 'prix' => '10.0',
+                'img_path' => 'null',
             ]);
         }
 
