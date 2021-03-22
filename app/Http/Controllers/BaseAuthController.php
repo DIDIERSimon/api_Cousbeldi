@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller as Controller;
 
 class BaseAuthController extends Controller
 {
+    
     /**
     * success response method.
     *

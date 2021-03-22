@@ -4,74 +4,36 @@ namespace App\Http\Controllers;
 
 use App\Models\Plat;
 use Illuminate\Http\JsonResponse;
-use App\Http\Controllers\BaseAuthController as BaseController;
 use Illuminate\Http\Request;
-use Validator;
-use App\Http\Resources\Plat as PlatResource;
 
-class PlatController extends BaseController
+class PlatController extends Controller
 {
     public function index()
     {
-        $plats = Plat::all();
-        return $this->sendResponse(PlatResource::collection($plats), 'Affichage des plats avec succès !');
+        return Plat::all();
     }
 
     public function show($plat)
     {
-        $plat = Plat::findOrFail($plat);
-        if(is_null($plat))
-        {
-            return $this->sendError('Plat introuvable dans la base d\'information !');
-        }
-        return $this->sendResponse(new PlatResource($plat), 'Produit trouvé avec succès');
+        return Plat::findOrFail($plat);
     }
 
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
-        $input = $request->all();
-
-        $validator = Validator::make($input, [
-            'nom' => 'required',
-            'description' => 'required',
-            'prix' => 'required',
-            'img_path' => 'required',
-        ]);
-        if($validator->fails())
-        {
-            return $this->sendError('Erreur lors de la validation !', $validator->errors());
-        }
-
-        $plat = Plat::create($input);
-
-        return $this->sendResponse(new PlatResource($plat), 'Plat créer avec succès !');
+        $plat = Plat::create($request->all());
+        return response()->json($plat, 201);
     }
 
     public function update(Request $request, Plat $plat)
     {
-        $input = $request->all();
-        $validator = Validator::make($input,[
-            'nom' => 'required',
-            'description' => 'required',
-            'prix' => 'required',
-            'img_path' => 'required',
-        ]);
-        if($validator->fails())
-        {
-            return $this->sendError('Impossible d\'update le plat !', $validator->errors());
-        }
-        $plat->nom = $input['name'];
-        $plat->description = $input['description'];
-        $plat->prix = $input['prix'];
-        $plat->img_path = $input['img_path'];
-        $plat->save();
-        return $this->sendResponse(new PlatResource($plat), 'Plat modifier avec succès !');
+        $plat->update($request->all());
+        return response()->json($plat, 200);
     }
 
     public function delete(Plat $plat)
     {
         $plat->delete();
-        return $this->sendResponse([], 'Plat supprimé avec succès !');
+        return response()->json(null, 204);
     }
 
 }
