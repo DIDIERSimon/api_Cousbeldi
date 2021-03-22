@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Plat extends JsonResource
+class Detail extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,10 +16,11 @@ class Plat extends JsonResource
     {
         return [
             'id' => $this->id,
-            'Nom' => $this->Nom,
+            'nom' => $this->nom,
             'description' => $this->description,
+            'ingredients' => $this->ingredients,
             'prix' => $this->prix,
-            'url_path' => $this->url_path,
+            'img_path' => $this->img_path,
         ];
     }
 }
