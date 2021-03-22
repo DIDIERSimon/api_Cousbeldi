@@ -14,8 +14,7 @@ class CreatePlatsTable extends Migration
     public function up()
     {
         Schema::create('plats', function (Blueprint $table) {
-            $table->increments("id");
-            $table->string("Nom");
+            $table->string("Nom")->primary();
             $table->text("description");
             $table->double("prix");
             $table->text("img_path");

@@ -14,13 +14,12 @@ class CreateDetailsTable extends Migration
     public function up()
     {
         Schema::create('details', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nom');
+            $table->string('nom')->primary();
             $table->text('description');
             $table->text('ingredients');
             $table->double('prix');
             $table->text('img_path');
-            $table->foreign('id')->references('id')->on('plats');
+            $table->foreign('nom')->references('Nom')->on('plats');
         });
     }
 
