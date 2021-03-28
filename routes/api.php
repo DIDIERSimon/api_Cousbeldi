@@ -18,26 +18,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/{api_token}', function (Request $request) {
+    return response()->json([
+        'name' => $request->name,
+    ]);
+})->middleware('api_token');
 //plats
-Route::get('plats', [PlatController::class, 'index']);
-Route::get('plats/{id}', [PlatController::class, 'show']);
-Route::post('plats', [PlatController::class, 'store']);
-Route::put('plats/{id}', [PlatController::class, 'update']);
-Route::delete('plats/{id}', [PlatController::class, 'delete']);
-
-//Boissons
-Route::get('boissons', [BoissonController::class, 'index']);
-Route::get('boisson/{id}', [BoissonController::class, 'show']);
-Route::post('boissons', [BoissonController::class, 'store']);
-Route::put('boisson/{id}', [BoissonController::class, 'update']);
-Route::delete('boisson/{id}', [BoissonController::class, 'delete']);
-
-//Menus
-Route::get('menus', [BoissonController::class, 'index']);
-Route::get('menus/{id}', [BoissonController::class, 'show']);
-Route::post('menus', [BoissonController::class, 'store']);
-Route::put('menus/{id}', [BoissonController::class, 'update']);
-Route::delete('menus/{id}', [BoissonController::class, 'delete']);
+Route::get('{api_token}/plats', [PlatController::class, 'index'])->middleware('api_token');
+Route::get('{api_token}{api_token}plats/{id}', [PlatController::class, 'show'])->middleware('api_token');
+Route::post('{api_token}/plats', [PlatController::class, 'store'])->middleware('api_token');
+Route::put('{api_token}/plats/{id}', [PlatController::class, 'update'])->middleware('api_token');
+Route::delete('{api_token}/plats/{id}', [PlatController::class, 'delete'])->middleware('api_token');
