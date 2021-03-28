@@ -1,8 +1,6 @@
 <?php
 
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PlatController;
-use App\Http\Controllers\RegisterController;
 use App\Models\Plat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -29,3 +27,8 @@ Route::get('{api_token}{api_token}plats/{id}', [PlatController::class, 'show'])-
 Route::post('{api_token}/plats', [PlatController::class, 'store'])->middleware('api_token');
 Route::put('{api_token}/plats/{id}', [PlatController::class, 'update'])->middleware('api_token');
 Route::delete('{api_token}/plats/{id}', [PlatController::class, 'delete'])->middleware('api_token');
+
+
+//Auth
+Route::post('register', [AuthController::class, 'register']);
+Route::post('login', [AuthController::class, 'login']);
