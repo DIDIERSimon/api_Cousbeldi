@@ -17,6 +17,7 @@ class CreatePlatsTable extends Migration
             $table->increments("id");
             $table->string("Nom");
             $table->text("description");
+            $table->text('ingredients');
             $table->double("prix");
             $table->text("img_path");
             $table->timestamps();
