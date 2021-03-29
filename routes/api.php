@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\PlatController;
-use App\Models\Plat;
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{api_token}', function (Request $request) {
+Route::get('/{api_token}/{name}', function (Request $request) {
     return response()->json([
         'name' => $request->name,
     ]);
